@@ -25,10 +25,7 @@ jobs:
         name: "Deploy manually"
         runs-on: linux-latest
         steps:
-            - name: Checkout
-              uses: actions/checkout@v2
-            - name: Deploy
-              uses: ./
-              with:
-                  ios_version: ${{ github.event.inputs.ios_version }}
-                  android_version: ${{ github.event.inputs.android_version }}
+            - uses: ./.github/actions/deploy-ios
+              if: ${{ github.event.inputs.deploy_ios == 'true' }}
+            - uses: ./.github/actions/deploy-android
+              if: ${{ github.event.inputs.deploy_android == 'true' }}

@@ -1,0 +1,9 @@
+name: "Deploy Android"
+
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      run: |
+        echo "Deploying Android"
+        echo "Android Deployed"
